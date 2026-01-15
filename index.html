@@ -138,17 +138,6 @@
             .hero p { font-size: 1.3rem; }
             nav { margin-top: 1rem; }
         }
-        #play-welcome {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            opacity: 0.5; /* Subtle; set to 0 for invisible, but keep for testing */
-        }
     </style>
 </head>
 <body>
@@ -162,7 +151,6 @@
         </nav>
     </header>
     <div class="hero">
-        <button id="play-welcome">Vítej</button>
         <div>
             <h1>Masáže Wolf</h1>
             <p>Relaxace • Síla • Tantra na vyžádání</p>
@@ -259,16 +247,16 @@
     <footer>
         © 2025 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
     </footer>
-    <audio id="welcome-audio" style="display:none" muted>
+    <audio id="welcome-audio" style="display:none">
         <source src="audio-wolf.mp3" type="audio/mpeg">
     </audio>
     <script>
-        window.addEventListener('load', function() {
-            document.getElementById('welcome-audio').play().catch(e => console.log('Autoplay blocked:', e));
-        });
-        document.getElementById('play-welcome').addEventListener('click', function() {
-            document.getElementById('welcome-audio').muted = false;
-            document.getElementById('welcome-audio').play();
+        let hasPlayed = false;
+        document.addEventListener('scroll', function() {
+            if (!hasPlayed) {
+                document.getElementById('welcome-audio').play().catch(e => console.log('Play blocked:', e));
+                hasPlayed = true;
+            }
         });
     </script>
 </body>
