@@ -51,7 +51,7 @@
             position: relative;
             color: white;
             text-align: center;
-            cursor: pointer; /* Makes it feel clickable */
+            cursor: pointer;
         }
         .hero::before {
             content: '';
@@ -98,7 +98,7 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
         }
         .karta:hover {
             transform: translateY(-5px);
@@ -110,6 +110,11 @@
         .cena {
             font-weight: bold;
             font-size: 1.1rem;
+        }
+        .tantra-karta:hover {
+            box-shadow: 0 8px 20px rgba(164, 194, 165, 0.5); /* Gentle green glow */
+            background-color: #f0f8f0; /* Warmer tint */
+            transform: scale(1.05); /* Subtle scale for pulse effect */
         }
         footer {
             background: var(--hlavni);
@@ -138,6 +143,11 @@
             .hero h1 { font-size: 3rem; }
             .hero p { font-size: 1.3rem; }
             nav { margin-top: 1rem; }
+        }
+        .product-icon {
+            width: 50px;
+            height: auto;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -194,7 +204,7 @@
                 <h3>Masáž chodidel</h3>
                 <p class="cena">60 min – 800 Kč</p>
             </div>
-            <div class="karta">
+            <div class="karta tantra-karta"> <!-- Added class for specific hover effects -->
                 <h3>Tantra masáž</h3>
                 <p>Na vyžádání – jen pro ty, kteří vědí, co chtějí.</p>
                 <a href="#kontakt" class="btn">Kontaktuj mě</a>
@@ -228,10 +238,12 @@
         <h2 style="text-align:center; color:var(--akcent);">Vlastní oleje a balzámy</h2>
         <div class="sluzby">
             <div class="karta">
+                <img src="https://www.ic.gc.ca/opic-cipo/tmj/eng/designs/2030707.png" alt="Konopná mast icon" class="product-icon">
                 <h3>Konopná mast</h3>
                 <p class="cena">250 Kč</p>
             </div>
             <div class="karta">
+                <img src="https://www.ic.gc.ca/opic-cipo/tmj/eng/designs/1976252.png" alt="Tantrický olej icon" class="product-icon">
                 <h3>Tantrický olej</h3>
                 <p>Teplý, smyslný, dlouhotrvající...<br><strong>300 Kč</strong></p>
             </div>
