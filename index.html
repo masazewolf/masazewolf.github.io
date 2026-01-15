@@ -138,6 +138,17 @@
             .hero p { font-size: 1.3rem; }
             nav { margin-top: 1rem; }
         }
+        #play-welcome {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0.5; /* Make it subtle, or remove if you want hidden */
+        }
     </style>
 </head>
 <body>
@@ -151,6 +162,7 @@
         </nav>
     </header>
     <div class="hero">
+        <button id="play-welcome">Vítej</button> <!-- Click this to play if auto fails -->
         <div>
             <h1>Masáže Wolf</h1>
             <p>Relaxace • Síla • Tantra na vyžádání</p>
@@ -247,12 +259,16 @@
     <footer>
         © 2025 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
     </footer>
-    <audio id="welcome-audio" style="display:none">
+    <audio id="welcome-audio" style="display:none" muted> <!-- Muted to allow autoplay; remove if using button only -->
         <source src="audio-wolf.mp3" type="audio/mpeg">
     </audio>
     <script>
         window.addEventListener('load', function() {
             document.getElementById('welcome-audio').play().catch(e => console.log('Autoplay blocked:', e));
+        });
+        document.getElementById('play-welcome').addEventListener('click', function() {
+            document.getElementById('welcome-audio').muted = false; // Unmute on click
+            document.getElementById('welcome-audio').play();
         });
     </script>
 </body>
