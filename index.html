@@ -51,6 +51,7 @@
             position: relative;
             color: white;
             text-align: center;
+            cursor: pointer; /* Makes it feel clickable */
         }
         .hero::before {
             content: '';
@@ -150,7 +151,7 @@
             <a href="#kontakt">Kontakt</a>
         </nav>
     </header>
-    <div class="hero">
+    <div class="hero" id="hero-section">
         <div>
             <h1>Masáže Wolf</h1>
             <p>Relaxace • Síla • Tantra na vyžádání</p>
@@ -252,7 +253,7 @@
     </audio>
     <script>
         let hasPlayed = false;
-        document.addEventListener('scroll', function() {
+        document.getElementById('hero-section').addEventListener('click', function() {
             if (!hasPlayed) {
                 document.getElementById('welcome-audio').play().catch(e => console.log('Play blocked:', e));
                 hasPlayed = true;
