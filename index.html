@@ -98,7 +98,8 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, box-shadow, background-color;
         }
         .karta:hover {
             transform: translateY(-5px);
@@ -148,10 +149,11 @@
             width: 50px;
             height: auto;
             margin-bottom: 1rem;
-            transition: transform 0.3s;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
         }
         .karta:hover .product-icon {
-            transform: scale(1.4); /* Makes it bigger on hover */
+            transform: scale(1.4);
         }
     </style>
 </head>
@@ -242,12 +244,12 @@
         <h2 style="text-align:center; color:var(--akcent);">Vlastní oleje a balzámy</h2>
         <div class="sluzby">
             <div class="karta">
-                <img src="https://cdn-icons-png.flaticon.com/512/1532/1532495.png" alt="Konopná mast icon" class="product-icon">
+                <img src="https://media.istockphoto.com/id/2102479932/vector/cannabis-line-icons-pixel-perfect-editable-stroke.jpg?s=612x612&w=0&k=20&c=5FnbwRIdpWoA_oBLrvVsaVAd1J-02zluwWM0zkbVK94=" alt="Konopná mast icon" class="product-icon">
                 <h3>Konopná mast</h3>
                 <p class="cena">250 Kč</p>
             </div>
             <div class="karta">
-                <img src="https://cdn-icons-png.flaticon.com/512/284/284690.png" alt="Tantrický olej icon" class="product-icon">
+                <img src="https://previews.123rf.com/images/milastokerpro/milastokerpro2205/milastokerpro220500188/186642480-continuous-drawing-of-one-line-of-bottles-with-oil-or-honey-or-lemon-or-lime-juice-for-scrubbing-and.jpg" alt="Tantrický olej icon" class="product-icon">
                 <h3>Tantrický olej</h3>
                 <p>Teplý, smyslný, dlouhotrvající...<br><strong>300 Kč</strong></p>
             </div>
