@@ -6,10 +6,10 @@
     <title>Masáže Wolf</title>
     <style>
         :root {
-            --hlavni: #1e352f; /* tmavě zelená */
-            --akcent: #a4c2a5; /* teplá zelená */
-            --svetla: #f5f5f0; /* jemná béžová */
-            --tepla: #e8f0e8; /* světle zelená */
+            --hlavni: #1e352f;
+            --akcent: #a4c2a5;
+            --svetla: #f5f5f0;
+            --tepla: #e8f0e8;
         }
         body {
             margin: 0;
@@ -247,7 +247,13 @@
     <footer>
         © 2025 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
     </footer>
-    <audio autoplay playsinline style=display:none;><source src=audio-wolf.mp3 type=audio/mpeg></audio>
+    <audio id="welcome-audio" style="display:none">
+        <source src="audio-wolf.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('welcome-audio').play().catch(e => console.log('Autoplay blocked:', e));
+        });
+    </script>
 </body>
-
 </html>
