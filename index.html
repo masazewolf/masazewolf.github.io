@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masáže Wolf</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPZ8GZDBSY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VPZ8GZDBSY');
+    </script>
     <style>
         :root {
             --hlavni: #1e352f;
@@ -354,22 +363,22 @@
         <form action="https://formspree.io/f/mdaakrky" method="POST">
             <label for="jmeno">Jméno</label>
             <input type="text" id="jmeno" name="Jméno" placeholder="Jak se jmenuješ?" required>
-            
+           
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="tvuj@email.cz" required>
-            
+           
             <label for="zprava">Zpráva</label>
             <textarea id="zprava" name="Zpráva" placeholder="Co máš na srdci?" rows="4" required></textarea>
-            
+           
             <label>
                 <input type="checkbox" name="Tantra" value="Ano, chci"> Chcete tantru? Ano, děkuji.
             </label>
-            
+           
             <button type="submit">Odeslat</button>
         </form>
     </section>
     <footer>
-        © 2025 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
+        © 2026 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
     </footer>
     <audio id="welcome-audio" style="display:none">
         <source src="audio-wolf.mp3" type="audio/mpeg">
@@ -382,7 +391,6 @@
                 hasPlayed = true;
             }
         });
-
         // Responsive menu toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
