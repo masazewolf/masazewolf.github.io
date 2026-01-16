@@ -196,17 +196,65 @@
         button[type="submit"]:hover {
             background: #8ba88c;
         }
+        /* Responsive Nav Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+        }
+        .hamburger .bar {
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            nav.active {
+                display: flex;
+            }
+            nav a {
+                margin: 0.5rem 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="https://i.imgur.com/rI1V3qI.png" alt="Masáže Wolf Logo" class="logo">
-        <nav>
+        <nav id="nav-menu">
             <a href="#sluzby">Služby</a>
             <a href="#balicky">Balíčky</a>
             <a href="#produkty">Produkty</a>
             <a href="#kontakt">Kontakt</a>
         </nav>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
     <div class="hero" id="hero-section">
         <div>
@@ -299,7 +347,7 @@
     <section id="kontakt">
         <h2 style="text-align:center; color:var(--akcent);">Kontakt</h2>
         <p style="text-align:center; font-size:1.2rem;">
-            Pasecká 9272, Zlín<br><br>
+            <a href="https://www.google.com/maps/search/?api=1&query=Paseck%C3%A1%209272%2C%20Zl%C3%ADn" target="_blank" style="color:var(--akcent);">Pasecká 9272, Zlín</a><br><br>
             E-mail: <a href="mailto:masazewolf@outlook.com" style="color:var(--akcent);">masazewolf@outlook.com</a><br>
             SMS / Tel: <a href="tel:+420737327737" style="color:var(--akcent);">737 327 737</a>
         </p>
@@ -334,8 +382,14 @@
                 hasPlayed = true;
             }
         });
+
+        // Responsive menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
-
-
