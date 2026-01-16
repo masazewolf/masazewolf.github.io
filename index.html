@@ -155,6 +155,47 @@
         .karta:hover .product-icon {
             transform: scale(1.4);
         }
+        /* Form styles */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.85);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            color: var(--hlavni);
+        }
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid var(--akcent);
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+            font-family: Georgia, serif;
+        }
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        button[type="submit"] {
+            background: var(--akcent);
+            color: var(--hlavni);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background: #8ba88c;
+        }
     </style>
 </head>
 <body>
@@ -262,6 +303,22 @@
             E-mail: <a href="mailto:masazewolf@outlook.com" style="color:var(--akcent);">masazewolf@outlook.com</a><br>
             SMS / Tel: <a href="tel:+420737327737" style="color:var(--akcent);">737 327 737</a>
         </p>
+        <form action="https://formspree.io/f/mdaakrky" method="POST">
+            <label for="jmeno">Jméno</label>
+            <input type="text" id="jmeno" name="Jméno" placeholder="Jak se jmenuješ?" required>
+            
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="tvuj@email.cz" required>
+            
+            <label for="zprava">Zpráva</label>
+            <textarea id="zprava" name="Zpráva" placeholder="Co máš na srdci?" rows="4" required></textarea>
+            
+            <label>
+                <input type="checkbox" name="Tantra" value="Ano, chci"> Chcete tantra? Ano, děkuji.
+            </label>
+            
+            <button type="submit">Odeslat</button>
+        </form>
     </section>
     <footer>
         © 2025 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
@@ -280,8 +337,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
