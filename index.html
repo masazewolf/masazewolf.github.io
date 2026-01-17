@@ -124,6 +124,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, box-shadow, background-color;
+            position: relative; /* For tooltip positioning */
         }
         .karta:hover {
             transform: translateY(-5px);
@@ -338,6 +339,37 @@
         .bio-button:hover {
             color: var(--akcent);
         }
+        /* Tooltip Styles for Descriptions */
+        .karta .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            top: -50px; /* Position above the card */
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .karta .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        .karta:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
     <!-- Calendly link widget begin -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -379,49 +411,60 @@
             <div class="karta">
                 <h3><span class="trans" data-cs="Klasická" data-en="Classic"></span></h3>
                 <p class="cena">60 min – 750 Kč<br><small>120 min <span class="trans" data-cs="celková" data-en="full body"></span> – 1 500 Kč</small></p>
+                <span class="tooltiptext"><span class="trans" data-cs="Klasická masáž uvolňuje svalové napětí, zlepšuje krevní oběh a podporuje celkovou relaxaci." data-en="Classic massage releases muscle tension, improves blood circulation, and promotes overall relaxation."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Baňkování" data-en="Cupping"></span></h3>
                 <p class="cena">60 min – 800 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Baňkování stimuluje prokrvení, uvolňuje toxiny a pomáhá při bolestech svalů a kloubů." data-en="Cupping stimulates blood flow, releases toxins, and helps with muscle and joint pain."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Lymfatická" data-en="Lymphatic"></span></h3>
                 <p class="cena">60 min – 1 000 Kč<br><small>120 min <span class="trans" data-cs="celková" data-en="full body"></span> – 1 600 Kč</small></p>
+                <span class="tooltiptext"><span class="trans" data-cs="Lymfatická masáž podporuje odtok lymfy, snižuje otoky a posiluje imunitu." data-en="Lymphatic massage supports lymph drainage, reduces swelling, and boosts immunity."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Sportovní / Hloubková" data-en="Sports / Deep Tissue"></span></h3>
                 <p class="cena">60 min – 1 000 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Hloubková masáž cílí na hlubší vrstvy svalů, ideální pro sportovce k regeneraci." data-en="Deep tissue massage targets deeper muscle layers, ideal for athletes' recovery."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Medová masáž" data-en="Honey Massage"></span></h3>
                 <p class="cena">75 min – 1 400 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Medová masáž detoxikuje organismus, zlepšuje stav pokožky a uvolňuje napětí." data-en="Honey massage detoxifies the body, improves skin condition, and releases tension."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Indická masáž hlavy" data-en="Indian Head Massage"></span></h3>
                 <p class="cena">45 min – 700 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Indická masáž hlavy uvolňuje stres, zlepšuje koncentraci a podporuje růst vlasů." data-en="Indian head massage relieves stress, improves concentration, and promotes hair growth."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Lávové kameny" data-en="Hot Stone"></span></h3>
                 <p class="cena">60 min – 1 500 Kč<br><small>120 min <span class="trans" data-cs="celková" data-en="full body"></span> – 1 950 Kč</small></p>
+                <span class="tooltiptext"><span class="trans" data-cs="Masáž horkými kameny hluboce relaxuje, uvolňuje svaly a harmonizuje energii." data-en="Hot stone massage deeply relaxes, releases muscles, and balances energy."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Masáž chodidel" data-en="Foot Massage"></span></h3>
                 <p class="cena">60 min – 800 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Reflexní masáž chodidel stimuluje orgány, zlepšuje zdraví a snižuje stres." data-en="Foot reflexology massage stimulates organs, improves health, and reduces stress."></span></span>
             </div>
             <div class="karta tantra-karta">
                 <h3><span class="trans" data-cs="Tantra masáž" data-en="Tantra Massage"></span></h3>
                 <p><span class="trans" data-cs="Na vyžádání – jen pro ty, kteří vědí, co chtějí." data-en="On request – only for those who know what they want."></span></p>
                 <a href="#kontakt" class="btn"><span class="trans" data-cs="Kontaktuj mě" data-en="Contact Me"></span></a>
+                <span class="tooltiptext"><span class="trans" data-cs="Tantrická masáž probouzí energii, posiluje intimitu a přináší hlubokou relaxaci." data-en="Tantra massage awakens energy, strengthens intimacy, and brings deep relaxation."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Relaxační meditace" data-en="Relaxation Meditation"></span></h3>
                 <p><span class="trans" data-cs="Lehněte si, relaxujte s naváděnými slovy pro hlubokou relaxaci." data-en="Lie down, relax with guided words for deep relaxation."></span></p>
                 <p class="cena">60 min – 400 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Naváděná relaxační meditace pro snížení stresu a dosažení vnitřního klidu." data-en="Guided relaxation meditation to reduce stress and achieve inner peace."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Dechová metoda Wim Hof" data-en="Wim Hof Breathing Method"></span></h3>
                 <p><span class="trans" data-cs="Naváděná dechová cvičení podle metody Wim Hof, zaměřená na dýchání." data-en="Guided breathing exercises according to the Wim Hof method, focused on breathing."></span></p>
                 <p class="cena">60 min – 500 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Dechová cvičení Wim Hof zvyšují odolnost, zlepšují zdraví a kontrolu nad tělem." data-en="Wim Hof breathing exercises increase resilience, improve health, and enhance body control."></span></span>
             </div>
         </div>
     </section>
@@ -431,10 +474,12 @@
             <div class="karta">
                 <h3><span class="trans" data-cs="Vlčí spánek" data-en="Wolf Sleep"></span></h3>
                 <p>3 <span class="trans" data-cs="masáže" data-en="massages"></span> (<span class="trans" data-cs="relaxační + hloubková + reflexologie" data-en="relaxation + deep tissue + reflexology"></span>)<br><strong>2 500 Kč</strong></p>
+                <span class="tooltiptext"><span class="trans" data-cs="Balíček tří masáží pro úplné uvolnění a regeneraci těla." data-en="Package of three massages for complete relaxation and body regeneration."></span></span>
             </div>
             <div class="karta">
                 <h3><span class="trans" data-cs="Medový úsvit" data-en="Honey Dawn"></span></h3>
                 <p><span class="trans" data-cs="Medová masáž + indická masáž hlavy" data-en="Honey massage + Indian head massage"></span><br><strong>1 950 Kč</strong></p>
+                <span class="tooltiptext"><span class="trans" data-cs="Kombinace medové masáže a masáže hlavy pro detox a relaxaci." data-en="Combination of honey massage and head massage for detox and relaxation."></span></span>
             </div>
         </div>
     </section>
@@ -445,11 +490,13 @@
                 <img src="https://i.imgur.com/4hAt2Vh.jpeg" alt="Konopná mast icon" class="product-icon">
                 <h3><span class="trans" data-cs="Konopná mast" data-en="Hemp Ointment"></span></h3>
                 <p class="cena">250 Kč</p>
+                <span class="tooltiptext"><span class="trans" data-cs="Uklidňující konopná mast ulevuje od bolesti svalů a zánětů, podporuje hojení." data-en="Soothing hemp ointment relieves muscle pain and inflammation, supports healing."></span></span>
             </div>
             <div class="karta">
                 <img src="https://i.imgur.com/K21Cojm.png" alt="Tantrický olej icon" class="product-icon">
                 <h3><span class="trans" data-cs="Tantrický olej" data-en="Tantric Oil"></span></h3>
                 <p><span class="trans" data-cs="Teplý, smyslný, dlouhotrvající..." data-en="Warm, sensual, long-lasting..."></span><br><strong>300 Kč</strong></p>
+                <span class="tooltiptext"><span class="trans" data-cs="Smyslný tantrický olej hydratuje pokožku, prodlužuje potěšení při masážích." data-en="Sensual tantric oil hydrates skin, prolongs pleasure during massages."></span></span>
             </div>
         </div>
     </section>
@@ -500,7 +547,7 @@
             <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Lukáš Křemeček – Vlk za dotekem" data-en="Lukáš Křemeček – The Wolf Behind the Touch"></span></h2>
             <p><span class="trans" data-cs="Jsem Lukáš Křemeček, přezdívaný Vlk, oddaný masér a průvodce wellnessem se sídlem v srdci České republiky. S více než dvěma desetiletími zkušeností jsem získal svůj první certifikát v roce 2005 a od té doby jsem vybudoval působivé portfolio kvalifikací, specializující se na širokou škálu terapeutických technik. To, co začalo jako vášnivý koníček, se postupně proměnilo v mou naplňující profesi, která spojuje starodávnou moudrost s moderními praktikami, aby pečovala o tělo, mysl i ducha.
 
-Své dovednosti jsem piloval v prémiových hotelech v České republice – v historickém městě Znojmo i v klidném lázeňském městečku Luhačovice, kde jsem byl žádaným masérem. Ruku v ruce s masážemi jde meditace, která je mým celoživotním společníkem – zakořeněná už v letech základní školy a dnes naprosto přirozeně propojená s mou prací.
+Své dovednosti jsem piloval v prémiových hotelech po celé České republice – v historickém městě Znojmo i v klidném lázeňském městečku Luhačovice, kde jsem byl žádaným masérem. Ruku v ruce s masážemi jde meditace, která je mým celoživotním společníkem – zakořeněná už v letech základní školy a dnes naprosto přirozeně propojená s mou prací.
 
 V Masáže Wolf (IČO: 23558318) nabízím širokou škálu služeb – od klasických a hlubokotkáňových masáží přes baňkování, lymfatickou drenáž, medové masáže, indickou masáž hlavy, lávové kameny až po reflexologii chodidel. Pro ty, kteří touží po hlubším spojení, jsou dostupné tantrické masáže. Doplňují je mé naváděné relaxační meditace a dechová cvičení podle metody Wim Hof, která pomáhají odemknout vnitřní sílu a klid.
 
@@ -508,9 +555,9 @@ Vyrábím si také vlastní prémiové produkty – uklidňující konopné mast
 
 Sídlím ve Zlíně a srdečně vás zvu, abyste znovu objevili rovnováhu. Rezervujte si svou cestu se mnou ještě dnes – relaxace na vás čeká." data-en="I am Lukáš Křemeček, affectionately known as the Wolf, a dedicated massage therapist and wellness guide based in the heart of the Czech Republic. With over two decades of experience, I earned my first certification in 2005 and have since built an impressive portfolio of qualifications, specializing in a wide array of therapeutic techniques. What began as a passionate hobby has evolved into my fulfilling profession, blending ancient wisdom with modern practices to nurture body, mind, and spirit.
 
-I've honed my skills in premium hotels in Czech Republic, including stints in the historic city of Znojmo and the serene spa town of Luhačovice, where I served as a sought-after massage therapist. Parallel to my hands-on expertise, meditation has been my lifelong companion—rooted in my elementary school years and seamlessly integrated into my work today.
+I've honed my skills in premium hotels across the Czech Republic, including stints in the historic city of Znojmo and the serene spa town of Luhačovice, where I served as a sought-after massage therapist. Parallel to my hands-on expertise, meditation has been my lifelong companion—rooted in my elementary school years and seamlessly integrated into my work today.
 
-At Masáže Wolf (IČO: 23558318), I offer a transformative range of services, from classic and deep tissue massages to specialized treatments like cupping, lymphatic drainage, honey massages, Indian head therapy, hot stones, and foot reflexology. For those seeking a deeper connection, tantra massages are available. Complementing these are my guided relaxation meditations and Wim Hof breathing sessions, designed to unlock your inner strength and serenity.
+At Masáže Wolf (IČO: 23558318), I offer a transformative range of services, from classic and deep tissue massages to specialized treatments like cupping, lymphatic drainage, honey massages, Indian head therapy, hot stones, and foot reflexology. For those seeking a deeper connection, tantra massages are available on request, reserved for the discerning. Complementing these are my guided relaxation meditations and Wim Hof breathing sessions, designed to unlock your inner strength and serenity.
 
 I also craft my own premium products, including soothing hemp ointments and sensual tantric oils, ensuring every experience is holistic and personalized. Whether you're unwinding with a first-time discount or diving into bespoke packages like 'Wolf Sleep' or 'Honey Dawn,' my approach is simple: empower your well-being with care, intuition, and a touch of wild magic.
 
