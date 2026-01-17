@@ -278,6 +278,66 @@
             height: 700px;
             margin: 0 auto;
         }
+        /* Bio Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            padding-top: 60px;
+            animation: fadeIn 0.3s;
+        }
+        .modal-content {
+            background-color: var(--tepla);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid var(--akcent);
+            width: 80%;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            animation: slideIn 0.5s;
+        }
+        .close {
+            color: var(--hlavni);
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: var(--akcent);
+            text-decoration: none;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @keyframes slideIn {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+        /* Wolf Head Button */
+        .wolf-button {
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .wolf-button img {
+            height: 40px;
+            transition: transform 0.3s;
+        }
+        .wolf-button img:hover {
+            transform: scale(1.1);
+        }
     </style>
     <!-- Calendly link widget begin -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -297,6 +357,9 @@
         <div class="lang-switcher">
             <a href="#" id="lang-cs">CS</a> |
             <a href="#" id="lang-en">EN</a>
+        </div>
+        <div class="wolf-button" id="wolf-button">
+            <img src="https://i.imgur.com/4hAt2Vh.jpeg" alt="Wolf Head" title="O mně / About Me"> <!-- Placeholder wolf head; replace with your image -->
         </div>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
@@ -432,6 +495,30 @@
     <footer>
         <span class="trans" data-cs="© 2026 Masáže Wolf. IČO: 23558318. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení." data-en="© 2026 Wolf Massages. IČO: 23558318 All rights reserved. But some things are meant for sharing."></span>
     </footer>
+    <!-- Bio Modal -->
+    <div id="bio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Lukáš Křemeček – Vlk za dotekem" data-en="Lukáš Křemeček – The Wolf Behind the Touch"></span></h2>
+            <p><span class="trans" data-cs="Jsem Lukáš Křemeček, přezdívaný Vlk, oddaný masér a průvodce wellnessem se sídlem v srdci České republiky. S více než dvěma desetiletími zkušeností jsem získal svůj první certifikát v roce 2005 a od té doby jsem vybudoval působivé portfolio kvalifikací, specializující se na širokou škálu terapeutických technik. To, co začalo jako vášnivý koníček, se postupně proměnilo v mou naplňující profesi, která spojuje starodávnou moudrost s moderními praktikami, aby pečovala o tělo, mysl i ducha.
+
+Své dovednosti jsem piloval v prémiových hotelech po celé České republice – v historickém městě Znojmo i v klidném lázeňském městečku Luhačovice, kde jsem byl žádaným masérem. Ruku v ruce s masážemi jde meditace, která je mým celoživotním společníkem – zakořeněná už v letech základní školy a dnes naprosto přirozeně propojená s mou prací.
+
+V Masáže Wolf (IČO: 23558318) nabízím širokou škálu služeb – od klasických a hlubokotkáňových masáží přes baňkování, lymfatickou drenáž, medové masáže, indickou masáž hlavy, lávové kameny až po reflexologii chodidel. Pro ty, kteří touží po hlubším spojení, jsou dostupné tantrické masáže. Doplňují je mé naváděné relaxační meditace a dechová cvičení podle metody Wim Hof, která pomáhají odemknout vnitřní sílu a klid.
+
+Vyrábím si také vlastní prémiové produkty – uklidňující konopné masti a smyslné tantrické oleje –, díky nimž je každá zkušenost skutečně celostní a přesně na míru. Ať už se uvolňujete s 15% slevou na první návštěvu, nebo se ponoříte do speciálních balíčků jako „Vlčí spánek“ či „Medový úsvit“, můj přístup je jednoduchý: posílit vaše blaho s péčí, intuicí a špetkou divoké magie.
+
+Sídlím ve Zlíně a srdečně vás zvu, abyste znovu objevili rovnováhu. Rezervujte si svou cestu se mnou ještě dnes – relaxace na vás čeká." data-en="I am Lukáš Křemeček, affectionately known as the Wolf, a dedicated massage therapist and wellness guide based in the heart of the Czech Republic. With over two decades of experience, I earned my first certification in 2005 and have since built an impressive portfolio of qualifications, specializing in a wide array of therapeutic techniques. What began as a passionate hobby has evolved into my fulfilling profession, blending ancient wisdom with modern practices to nurture body, mind, and spirit.
+
+I've honed my skills in premium hotels across the Czech Republic, including stints in the historic city of Znojmo and the serene spa town of Luhačovice, where I served as a sought-after massage therapist. Parallel to my hands-on expertise, meditation has been my lifelong companion—rooted in my elementary school years and seamlessly integrated into my work today.
+
+At Masáže Wolf (IČO: 23558318), I offer a transformative range of services, from classic and deep tissue massages to specialized treatments like cupping, lymphatic drainage, honey massages, Indian head therapy, hot stones, and foot reflexology. For those seeking a deeper connection, tantra massages are available on request, reserved for the discerning. Complementing these are my guided relaxation meditations and Wim Hof breathing sessions, designed to unlock your inner strength and serenity.
+
+I also craft my own premium products, including soothing hemp ointments and sensual tantric oils, ensuring every experience is holistic and personalized. Whether you're unwinding with a first-time discount or diving into bespoke packages like 'Wolf Sleep' or 'Honey Dawn,' my approach is simple: empower your well-being with care, intuition, and a touch of wild magic.
+
+Located in Zlín, I invite you to rediscover balance. Book your journey with me today—relaxation awaits."></span></p>
+        </div>
+    </div>
     <audio id="welcome-audio" style="display:none">
         <source src="audio-wolf.mp3" type="audio/mpeg">
     </audio>
@@ -478,6 +565,21 @@
         langEn.addEventListener('click', (e) => {
             e.preventDefault();
             setLanguage('en');
+        });
+        // Bio Modal Script
+        const modal = document.getElementById('bio-modal');
+        const wolfButton = document.getElementById('wolf-button');
+        const closeModal = document.getElementById('close-modal');
+        wolfButton.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
         });
     </script>
 </body>
