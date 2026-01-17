@@ -326,17 +326,17 @@
             from {transform: translateY(-50px); opacity: 0;}
             to {transform: translateY(0); opacity: 1;}
         }
-        /* Wolf Head Button */
-        .wolf-button {
-            cursor: pointer;
+        /* Bio Button Styles */
+        .bio-button {
+            color: white;
             margin-left: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
         }
-        .wolf-button img {
-            height: 40px;
-            transition: transform 0.3s;
-        }
-        .wolf-button img:hover {
-            transform: scale(1.1);
+        .bio-button:hover {
+            color: var(--akcent);
         }
     </style>
     <!-- Calendly link widget begin -->
@@ -358,9 +358,7 @@
             <a href="#" id="lang-cs">CS</a> |
             <a href="#" id="lang-en">EN</a>
         </div>
-        <div class="wolf-button" id="wolf-button">
-            <img src="https://i.imgur.com/4hAt2Vh.jpeg" alt="Wolf Head" title="O mně / About Me"> <!-- Placeholder wolf head; replace with your image -->
-        </div>
+        <a class="bio-button" id="bio-button"><span class="trans" data-cs="O mě" data-en="About Me"></span></a>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -512,7 +510,7 @@ Sídlím ve Zlíně a srdečně vás zvu, abyste znovu objevili rovnováhu. Reze
 
 I've honed my skills in premium hotels in Czech Republic, including stints in the historic city of Znojmo and the serene spa town of Luhačovice, where I served as a sought-after massage therapist. Parallel to my hands-on expertise, meditation has been my lifelong companion—rooted in my elementary school years and seamlessly integrated into my work today.
 
-At Masáže Wolf (IČO: 23558318), I offer a transformative range of services, from classic and deep tissue massages to specialized treatments like cupping, lymphatic drainage, honey massages, Indian head therapy, hot stones, and foot reflexology. For those seeking a deeper connection, tantra massages are available on request, reserved for the discerning. Complementing these are my guided relaxation meditations and Wim Hof breathing sessions, designed to unlock your inner strength and serenity.
+At Masáže Wolf (IČO: 23558318), I offer a transformative range of services, from classic and deep tissue massages to specialized treatments like cupping, lymphatic drainage, honey massages, Indian head therapy, hot stones, and foot reflexology. For those seeking a deeper connection, tantra massages are available. Complementing these are my guided relaxation meditations and Wim Hof breathing sessions, designed to unlock your inner strength and serenity.
 
 I also craft my own premium products, including soothing hemp ointments and sensual tantric oils, ensuring every experience is holistic and personalized. Whether you're unwinding with a first-time discount or diving into bespoke packages like 'Wolf Sleep' or 'Honey Dawn,' my approach is simple: empower your well-being with care, intuition, and a touch of wild magic.
 
@@ -568,9 +566,10 @@ Located in Zlín, I invite you to rediscover balance. Book your journey with me 
         });
         // Bio Modal Script
         const modal = document.getElementById('bio-modal');
-        const wolfButton = document.getElementById('wolf-button');
+        const bioButton = document.getElementById('bio-button');
         const closeModal = document.getElementById('close-modal');
-        wolfButton.addEventListener('click', function() {
+        bioButton.addEventListener('click', function(event) {
+            event.preventDefault();
             modal.style.display = 'block';
         });
         closeModal.addEventListener('click', function() {
@@ -584,4 +583,3 @@ Located in Zlín, I invite you to rediscover balance. Book your journey with me 
     </script>
 </body>
 </html>
-
