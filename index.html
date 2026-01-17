@@ -10,7 +10,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-VPZ8GZDBSY');
     </script>
     <style>
@@ -111,6 +110,7 @@
         #sluzby { background: var(--tepla); }
         #balicky { background: var(--svetla); }
         #produkty { background: var(--tepla); }
+        #rezervace { background: var(--svetla); }
         #kontakt { background: var(--hlavni); color: white; }
         .sluzby {
             display: grid;
@@ -196,6 +196,7 @@
         }
         input[type="text"],
         input[type="email"],
+        input[type="tel"],
         textarea {
             width: 100%;
             padding: 0.6rem;
@@ -271,7 +272,17 @@
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
+        /* Calendly styles */
+        #calendly-embed {
+            min-width: 320px;
+            height: 700px;
+            margin: 0 auto;
+        }
     </style>
+    <!-- Calendly link widget begin -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <!-- Calendly link widget end -->
 </head>
 <body>
     <header>
@@ -280,6 +291,7 @@
             <a href="#sluzby"><span class="trans" data-cs="Služby" data-en="Services"></span></a>
             <a href="#balicky"><span class="trans" data-cs="Balíčky" data-en="Packages"></span></a>
             <a href="#produkty"><span class="trans" data-cs="Produkty" data-en="Products"></span></a>
+            <a href="#rezervace"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></a>
             <a href="#kontakt"><span class="trans" data-cs="Kontakt" data-en="Contact"></span></a>
         </nav>
         <div class="lang-switcher">
@@ -380,21 +392,31 @@
             </div>
         </div>
     </section>
+    <section id="rezervace">
+        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></h2>
+        <p style="text-align:center;"><span class="trans" data-cs="Rezervujte si termín přímo zde. Minimálně 3 dny dopředu." data-en="Book your session directly here. Minimum 3 days in advance."></span></p>
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/masazewolf/objednavka" id="calendly-embed"></div>
+        <!-- Calendly inline widget end -->
+    </section>
     <section id="kontakt">
         <form action="https://formspree.io/f/mdaakrky" method="POST">
             <label for="jmeno"><span class="trans" data-cs="Jméno" data-en="Name"></span></label>
             <input type="text" id="jmeno" name="Jméno" placeholder='<span class="trans" data-cs="Jak se jmenuješ?" data-en="What\'s your name?"></span>' required>
-           
+          
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder='<span class="trans" data-cs="tvuj@email.cz" data-en="your@email.com"></span>' required>
-           
+          
+            <label for="telefon"><span class="trans" data-cs="Telefon" data-en="Phone"></span></label>
+            <input type="tel" id="telefon" name="Telefon" placeholder='<span class="trans" data-cs="Tvůj telefonní číslo" data-en="Your phone number"></span>' required>
+          
             <label for="zprava"><span class="trans" data-cs="Zpráva" data-en="Message"></span></label>
             <textarea id="zprava" name="Zpráva" placeholder='<span class="trans" data-cs="Co máš na srdci?" data-en="What\'s on your mind?"></span>' rows="4" required></textarea>
-           
+          
             <label>
                 <input type="checkbox" name="Tantra" value="Ano, chci"> <span class="trans" data-cs="Chcete tantru? Ano, děkuji." data-en="Do you want tantra? Yes, thank you."></span>
             </label>
-           
+          
             <button type="submit"><span class="trans" data-cs="Odeslat" data-en="Send"></span></button>
         </form>
         <div class="map-container">
@@ -428,22 +450,18 @@
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
         // Language switcher
         const langCs = document.getElementById('lang-cs');
         const langEn = document.getElementById('lang-en');
         const transElements = document.querySelectorAll('.trans');
         const html = document.documentElement;
-
         function setLanguage(lang) {
             localStorage.setItem('lang', lang);
             html.lang = lang === 'en' ? 'en' : 'cs';
             transElements.forEach(el => {
                 el.textContent = el.getAttribute(`data-${lang}`);
             });
-            // Update placeholders (since they're in attributes)
-            document.querySelector('input[name="Jméno"]').placeholder = document.querySelector('input[name="Jméno"]').getAttribute('placeholder').replace(/<span.*>(.*)<\/span>/, '$1'); // Simplified, but works for this
-            // Note: Placeholders are static in HTML, so we update them dynamically
+            // Update placeholders dynamically
             const placeholders = document.querySelectorAll('input[placeholder], textarea[placeholder]');
             placeholders.forEach(pl => {
                 const span = pl.getAttribute('placeholder').match(/<span class="trans" data-cs="(.*)" data-en="(.*)"/);
@@ -454,10 +472,8 @@
             langCs.classList.toggle('active', lang === 'cs');
             langEn.classList.toggle('active', lang === 'en');
         }
-
         const savedLang = localStorage.getItem('lang') || 'cs';
         setLanguage(savedLang);
-
         langCs.addEventListener('click', (e) => {
             e.preventDefault();
             setLanguage('cs');
