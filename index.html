@@ -402,21 +402,21 @@
     <section id="kontakt">
         <form action="https://formspree.io/f/mdaakrky" method="POST">
             <label for="jmeno"><span class="trans" data-cs="Jméno" data-en="Name"></span></label>
-            <input type="text" id="jmeno" name="Jméno" placeholder='<span class="trans" data-cs="Jak se jmenuješ?" data-en="What\'s your name?"></span>' required>
-          
+            <input type="text" id="jmeno" name="Jméno" placeholder="" data-placeholder-cs="Jak se jmenuješ?" data-placeholder-en="What's your name?" required>
+         
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder='<span class="trans" data-cs="tvuj@email.cz" data-en="your@email.com"></span>' required>
-          
+            <input type="email" id="email" name="email" placeholder="" data-placeholder-cs="tvuj@email.cz" data-placeholder-en="your@email.com" required>
+         
             <label for="telefon"><span class="trans" data-cs="Telefon" data-en="Phone"></span></label>
-            <input type="tel" id="telefon" name="Telefon" placeholder='<span class="trans" data-cs="Tvůj telefonní číslo" data-en="Your phone number"></span>' required>
-          
+            <input type="tel" id="telefon" name="Telefon" placeholder="" data-placeholder-cs="Tvůj telefonní číslo" data-placeholder-en="Your phone number" required>
+         
             <label for="zprava"><span class="trans" data-cs="Zpráva" data-en="Message"></span></label>
-            <textarea id="zprava" name="Zpráva" placeholder='<span class="trans" data-cs="Co máš na srdci?" data-en="What\'s on your mind?"></span>' rows="4" required></textarea>
-          
+            <textarea id="zprava" name="Zpráva" placeholder="" data-placeholder-cs="Co máš na srdci?" data-placeholder-en="What's on your mind?" rows="4" required></textarea>
+         
             <label>
                 <input type="checkbox" name="Tantra" value="Ano, chci"> <span class="trans" data-cs="Chcete tantru? Ano, děkuji." data-en="Do you want tantra? Yes, thank you."></span>
             </label>
-          
+         
             <button type="submit"><span class="trans" data-cs="Odeslat" data-en="Send"></span></button>
         </form>
         <div class="map-container">
@@ -462,12 +462,9 @@
                 el.textContent = el.getAttribute(`data-${lang}`);
             });
             // Update placeholders dynamically
-            const placeholders = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+            const placeholders = document.querySelectorAll('[data-placeholder-cs]');
             placeholders.forEach(pl => {
-                const span = pl.getAttribute('placeholder').match(/<span class="trans" data-cs="(.*)" data-en="(.*)"/);
-                if (span) {
-                    pl.placeholder = lang === 'cs' ? span[1] : span[2];
-                }
+                pl.placeholder = lang === 'cs' ? pl.dataset.placeholderCs : pl.dataset.placeholderEn;
             });
             langCs.classList.toggle('active', lang === 'cs');
             langEn.classList.toggle('active', lang === 'en');
@@ -485,4 +482,3 @@
     </script>
 </body>
 </html>
-
