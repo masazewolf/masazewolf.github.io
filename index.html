@@ -51,6 +51,21 @@
         nav a:hover {
             color: var(--akcent);
         }
+        .lang-switcher {
+            margin-left: 1rem;
+        }
+        .lang-switcher a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 0.5rem;
+        }
+        .lang-switcher a:hover {
+            color: var(--akcent);
+        }
+        .lang-switcher a.active {
+            color: var(--akcent);
+        }
         .hero {
             background: url('https://i.imgur.com/uNtBxMl.jpeg') center/cover no-repeat;
             height: 90vh;
@@ -262,11 +277,15 @@
     <header>
         <img src="https://i.imgur.com/rI1V3qI.png" alt="Masáže Wolf Logo" class="logo">
         <nav id="nav-menu">
-            <a href="#sluzby">Služby</a>
-            <a href="#balicky">Balíčky</a>
-            <a href="#produkty">Produkty</a>
-            <a href="#kontakt">Kontakt</a>
+            <a href="#sluzby"><span class="trans" data-cs="Služby" data-en="Services"></span></a>
+            <a href="#balicky"><span class="trans" data-cs="Balíčky" data-en="Packages"></span></a>
+            <a href="#produkty"><span class="trans" data-cs="Produkty" data-en="Products"></span></a>
+            <a href="#kontakt"><span class="trans" data-cs="Kontakt" data-en="Contact"></span></a>
         </nav>
+        <div class="lang-switcher">
+            <a href="#" id="lang-cs">CS</a> |
+            <a href="#" id="lang-en">EN</a>
+        </div>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -275,113 +294,113 @@
     </header>
     <div class="hero" id="hero-section">
         <div>
-            <h1>Masáže Wolf</h1>
-            <p>Relaxace • Síla • Tantra na vyžádání</p>
+            <h1><span class="trans" data-cs="Masáže Wolf" data-en="Wolf Massages"></span></h1>
+            <p><span class="trans" data-cs="Relaxace • Síla • Tantra na vyžádání" data-en="Relaxation • Strength • Tantra on Request"></span></p>
         </div>
     </div>
-    <div class="sleva">První masáž – 15 % sleva!</div>
-    <div class="sleva">První návštěva k meditaci – zdarma: masáž chodidel + představení meditace!</div>
+    <div class="sleva"><span class="trans" data-cs="První masáž – 15 % sleva!" data-en="First Massage – 15% Discount!"></span></div>
+    <div class="sleva"><span class="trans" data-cs="První návštěva k meditaci – zdarma: masáž chodidel + představení meditace!" data-en="First Meditation Visit – Free: Foot Massage + Meditation Introduction!"></span></div>
     <section id="sluzby">
-        <h2 style="text-align:center; color:var(--akcent);">Služby</h2>
+        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Služby" data-en="Services"></span></h2>
         <div class="sluzby">
             <div class="karta">
-                <h3>Klasická</h3>
-                <p class="cena">60 min – 750 Kč<br><small>120 min celková – 1 500 Kč</small></p>
+                <h3><span class="trans" data-cs="Klasická" data-en="Classic"></span></h3>
+                <p class="cena">60 min – 750 Kč<br><small>120 min <span class="trans" data-cs="celková" data-en="full body"></span> – 1 500 Kč</small></p>
             </div>
             <div class="karta">
-                <h3>Baňkování</h3>
+                <h3><span class="trans" data-cs="Baňkování" data-en="Cupping"></span></h3>
                 <p class="cena">60 min – 800 Kč</p>
             </div>
             <div class="karta">
-                <h3>Lymfatická</h3>
-                <p class="cena">60 min – 1 000 Kč<br><small>120 min celková – 1 600 Kč</small></p>
+                <h3><span class="trans" data-cs="Lymfatická" data-en="Lymphatic"></span></h3>
+                <p class="cena">60 min – 1 000 Kč<br><small>120 min <span class="trans" data-cs="celková" data-en="full body"></span> – 1 600 Kč</small></p>
             </div>
             <div class="karta">
-                <h3>Sportovní / Hloubková</h3>
+                <h3><span class="trans" data-cs="Sportovní / Hloubková" data-en="Sports / Deep Tissue"></span></h3>
                 <p class="cena">60 min – 1 000 Kč</p>
             </div>
             <div class="karta">
-                <h3>Medová masáž</h3>
+                <h3><span class="trans" data-cs="Medová masáž" data-en="Honey Massage"></span></h3>
                 <p class="cena">75 min – 1 400 Kč</p>
             </div>
             <div class="karta">
-                <h3>Indická masáž hlavy</h3>
+                <h3><span class="trans" data-cs="Indická masáž hlavy" data-en="Indian Head Massage"></span></h3>
                 <p class="cena">45 min – 700 Kč</p>
             </div>
             <div class="karta">
-                <h3>Lávové kameny</h3>
-                <p class="cena">60 min – 1 500 Kč<br><small>120 min celková – 1 950 Kč</small></p>
+                <h3><span class="trans" data-cs="Lávové kameny" data-en="Hot Stone"></span></h3>
+                <p class="cena">60 min – 1 500 Kč<br><small>120 min <span class="trans" data-cs="celková" data-en="full body"></span> – 1 950 Kč</small></p>
             </div>
             <div class="karta">
-                <h3>Masáž chodidel</h3>
+                <h3><span class="trans" data-cs="Masáž chodidel" data-en="Foot Massage"></span></h3>
                 <p class="cena">60 min – 800 Kč</p>
             </div>
             <div class="karta tantra-karta">
-                <h3>Tantra masáž</h3>
-                <p>Na vyžádání – jen pro ty, kteří vědí, co chtějí.</p>
-                <a href="#kontakt" class="btn">Kontaktuj mě</a>
+                <h3><span class="trans" data-cs="Tantra masáž" data-en="Tantra Massage"></span></h3>
+                <p><span class="trans" data-cs="Na vyžádání – jen pro ty, kteří vědí, co chtějí." data-en="On request – only for those who know what they want."></span></p>
+                <a href="#kontakt" class="btn"><span class="trans" data-cs="Kontaktuj mě" data-en="Contact Me"></span></a>
             </div>
             <div class="karta">
-                <h3>Relaxační meditace</h3>
-                <p>Lehněte si, relaxujte s naváděnými slovy pro hlubokou relaxaci.</p>
+                <h3><span class="trans" data-cs="Relaxační meditace" data-en="Relaxation Meditation"></span></h3>
+                <p><span class="trans" data-cs="Lehněte si, relaxujte s naváděnými slovy pro hlubokou relaxaci." data-en="Lie down, relax with guided words for deep relaxation."></span></p>
                 <p class="cena">60 min – 400 Kč</p>
             </div>
             <div class="karta">
-                <h3>Dechová metoda Wim Hof</h3>
-                <p>Naváděná dechová cvičení podle metody Wim Hof, zaměřená na dýchání.</p>
+                <h3><span class="trans" data-cs="Dechová metoda Wim Hof" data-en="Wim Hof Breathing Method"></span></h3>
+                <p><span class="trans" data-cs="Naváděná dechová cvičení podle metody Wim Hof, zaměřená na dýchání." data-en="Guided breathing exercises according to the Wim Hof method, focused on breathing."></span></p>
                 <p class="cena">60 min – 500 Kč</p>
             </div>
         </div>
     </section>
     <section id="balicky">
-        <h2 style="text-align:center; color:var(--akcent);">Balíčky</h2>
+        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Balíčky" data-en="Packages"></span></h2>
         <div class="sluzby">
             <div class="karta">
-                <h3>Vlčí spánek</h3>
-                <p>3 masáže (relaxační + hloubková + reflexologie)<br><strong>2 500 Kč</strong></p>
+                <h3><span class="trans" data-cs="Vlčí spánek" data-en="Wolf Sleep"></span></h3>
+                <p>3 <span class="trans" data-cs="masáže" data-en="massages"></span> (<span class="trans" data-cs="relaxační + hloubková + reflexologie" data-en="relaxation + deep tissue + reflexology"></span>)<br><strong>2 500 Kč</strong></p>
             </div>
             <div class="karta">
-                <h3>Medový úsvit</h3>
-                <p>Medová masáž + indická masáž hlavy<br><strong>1 950 Kč</strong></p>
+                <h3><span class="trans" data-cs="Medový úsvit" data-en="Honey Dawn"></span></h3>
+                <p><span class="trans" data-cs="Medová masáž + indická masáž hlavy" data-en="Honey massage + Indian head massage"></span><br><strong>1 950 Kč</strong></p>
             </div>
         </div>
     </section>
     <section id="produkty">
-        <h2 style="text-align:center; color:var(--akcent);">Vlastní oleje a balzámy</h2>
+        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Vlastní oleje a balzámy" data-en="Own Oils and Balms"></span></h2>
         <div class="sluzby">
             <div class="karta">
                 <img src="https://i.imgur.com/4hAt2Vh.jpeg" alt="Konopná mast icon" class="product-icon">
-                <h3>Konopná mast</h3>
+                <h3><span class="trans" data-cs="Konopná mast" data-en="Hemp Ointment"></span></h3>
                 <p class="cena">250 Kč</p>
             </div>
             <div class="karta">
                 <img src="https://i.imgur.com/K21Cojm.png" alt="Tantrický olej icon" class="product-icon">
-                <h3>Tantrický olej</h3>
-                <p>Teplý, smyslný, dlouhotrvající...<br><strong>300 Kč</strong></p>
+                <h3><span class="trans" data-cs="Tantrický olej" data-en="Tantric Oil"></span></h3>
+                <p><span class="trans" data-cs="Teplý, smyslný, dlouhotrvající..." data-en="Warm, sensual, long-lasting..."></span><br><strong>300 Kč</strong></p>
             </div>
         </div>
     </section>
     <section id="kontakt">
         <form action="https://formspree.io/f/mdaakrky" method="POST">
-            <label for="jmeno">Jméno</label>
-            <input type="text" id="jmeno" name="Jméno" placeholder="Jak se jmenuješ?" required>
+            <label for="jmeno"><span class="trans" data-cs="Jméno" data-en="Name"></span></label>
+            <input type="text" id="jmeno" name="Jméno" placeholder='<span class="trans" data-cs="Jak se jmenuješ?" data-en="What\'s your name?"></span>' required>
            
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="tvuj@email.cz" required>
+            <input type="email" id="email" name="email" placeholder='<span class="trans" data-cs="tvuj@email.cz" data-en="your@email.com"></span>' required>
            
-            <label for="zprava">Zpráva</label>
-            <textarea id="zprava" name="Zpráva" placeholder="Co máš na srdci?" rows="4" required></textarea>
+            <label for="zprava"><span class="trans" data-cs="Zpráva" data-en="Message"></span></label>
+            <textarea id="zprava" name="Zpráva" placeholder='<span class="trans" data-cs="Co máš na srdci?" data-en="What\'s on your mind?"></span>' rows="4" required></textarea>
            
             <label>
-                <input type="checkbox" name="Tantra" value="Ano, chci"> Chcete tantru? Ano, děkuji.
+                <input type="checkbox" name="Tantra" value="Ano, chci"> <span class="trans" data-cs="Chcete tantru? Ano, děkuji." data-en="Do you want tantra? Yes, thank you."></span>
             </label>
            
-            <button type="submit">Odeslat</button>
+            <button type="submit"><span class="trans" data-cs="Odeslat" data-en="Send"></span></button>
         </form>
         <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2586!2d17.660101!3d49.2390761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47130b9e2276dde5%3A0x134ae627eab06a2f!2sMas%C3%A1%C5%BEe+Wolf!5e0!3m2!1scs!2scz!4v1705310880000" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <h2 style="text-align:center; color:var(--akcent);">Kontakt</h2>
+        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Kontakt" data-en="Contact"></span></h2>
         <p style="text-align:center; font-size:1.2rem;">
             <a href="https://www.google.com/maps/search/?api=1&query=6MQ6%2BJ2+Zl%C3%ADn" target="_blank" style="color:var(--akcent);">Pasecká 9272, Zlín</a><br><br>
             E-mail: <a href="mailto:masazewolf@outlook.com" style="color:var(--akcent);">masazewolf@outlook.com</a><br>
@@ -389,7 +408,7 @@
         </p>
     </section>
     <footer>
-        © 2026 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení.
+        <span class="trans" data-cs="© 2026 Masáže Wolf. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení." data-en="© 2026 Wolf Massages. All rights reserved. But some things are meant for sharing."></span>
     </footer>
     <audio id="welcome-audio" style="display:none">
         <source src="audio-wolf.mp3" type="audio/mpeg">
@@ -409,8 +428,44 @@
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
+
+        // Language switcher
+        const langCs = document.getElementById('lang-cs');
+        const langEn = document.getElementById('lang-en');
+        const transElements = document.querySelectorAll('.trans');
+        const html = document.documentElement;
+
+        function setLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            html.lang = lang === 'en' ? 'en' : 'cs';
+            transElements.forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            });
+            // Update placeholders (since they're in attributes)
+            document.querySelector('input[name="Jméno"]').placeholder = document.querySelector('input[name="Jméno"]').getAttribute('placeholder').replace(/<span.*>(.*)<\/span>/, '$1'); // Simplified, but works for this
+            // Note: Placeholders are static in HTML, so we update them dynamically
+            const placeholders = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+            placeholders.forEach(pl => {
+                const span = pl.getAttribute('placeholder').match(/<span class="trans" data-cs="(.*)" data-en="(.*)"/);
+                if (span) {
+                    pl.placeholder = lang === 'cs' ? span[1] : span[2];
+                }
+            });
+            langCs.classList.toggle('active', lang === 'cs');
+            langEn.classList.toggle('active', lang === 'en');
+        }
+
+        const savedLang = localStorage.getItem('lang') || 'cs';
+        setLanguage(savedLang);
+
+        langCs.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('cs');
+        });
+        langEn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLanguage('en');
+        });
     </script>
 </body>
 </html>
-
-
