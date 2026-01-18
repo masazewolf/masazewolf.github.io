@@ -20,8 +20,8 @@
         :root {
             --hlavni: #1e352f;
             --akcent: #a4c2a5;
-            --svetla: #f5f5f0;
-            --tepla: #e8f0e8;
+            --svetla: #4D3819;
+            --tepla: #4D3819;
         }
         body {
             margin: 0;
@@ -38,12 +38,13 @@
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
         }
         .logo {
             height: 60px;
         }
         nav {
-            text-align: right;
+            text-align: center;
         }
         nav a {
             color: white;
@@ -374,6 +375,13 @@
             visibility: visible;
             opacity: 1;
         }
+        @media (min-width: 769px) {
+            nav {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
     </style>
     <!-- Calendly link widget begin -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -506,7 +514,7 @@
     </section>
     <section id="rezervace">
         <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></h2>
-        <p style="text-align:center;"><span class="trans" data-cs="Rezervujte si termín přímo zde. Minimálně 3 dny dopředu." data-en="Book your session directly here. Minimum 3 days in advance."></span></p>
+        <p style="text-align:center;"><span class="trans" data-cs="Rezervujte si termín přímo zde." data-en="Book your session directly here."></span></p>
         <!-- Calendly inline widget begin -->
         <div class="calendly-inline-widget" data-url="https://calendly.com/masazewolf/objednavka" id="calendly-embed"></div>
         <!-- Calendly inline widget end -->
