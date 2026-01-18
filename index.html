@@ -12,6 +12,10 @@
       gtag('js', new Date());
       gtag('config', 'G-VPZ8GZDBSY');
     </script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
     <style>
         :root {
             --hlavni: #1e352f;
@@ -112,6 +116,7 @@
         #produkty { background: var(--tepla); }
         #rezervace { background: var(--svetla); }
         #kontakt { background: var(--hlavni); color: white; }
+        #klienti { background: var(--tepla); display: none; } /* Hidden until password */
         .sluzby {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -303,7 +308,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             position: relative;
-            animation: slideIn 0.5s;
+            animation: slideIn 0.3s;
         }
         .close {
             color: var(--hlavni);
@@ -370,6 +375,29 @@
             visibility: visible;
             opacity: 1;
         }
+        /* Client Database Styles */
+        .client-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .client-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        .client-table th, .client-table td {
+            border: 1px solid var(--akcent);
+            padding: 0.5rem;
+            text-align: left;
+        }
+        .client-table th {
+            background: var(--akcent);
+            color: var(--hlavni);
+        }
+        .client-edit-form {
+            display: none;
+            margin-top: 1rem;
+        }
     </style>
     <!-- Calendly link widget begin -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -385,6 +413,7 @@
             <a href="#produkty"><span class="trans" data-cs="Produkty" data-en="Products"></span></a>
             <a href="#rezervace"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></a>
             <a href="#kontakt"><span class="trans" data-cs="Kontakt" data-en="Contact"></span></a>
+            <a href="#klienti"><span class="trans" data-cs="Klienti" data-en="Clients"></span></a>
         </nav>
         <div class="lang-switcher">
             <a href="#" id="lang-cs">CS</a> |
@@ -400,7 +429,7 @@
     <div class="hero" id="hero-section">
         <div>
             <h1><span class="trans" data-cs="Masáže Wolf" data-en="Wolf Massages"></span></h1>
-            <p><span class="trans" data-cs="Relaxace • Síla • Tantra" data-en="Relaxation • Strength • Tantra"></span></p>
+            <p><span class="trans" data-cs="Relaxace • Síla • Tantra na vyžádání" data-en="Relaxation • Strength • Tantra on Request"></span></p>
         </div>
     </div>
     <div class="sleva"><span class="trans" data-cs="První masáž – 15 % sleva!" data-en="First Massage – 15% Discount!"></span></div>
@@ -450,7 +479,7 @@
             </div>
             <div class="karta tantra-karta">
                 <h3><span class="trans" data-cs="Tantra masáž" data-en="Tantra Massage"></span></h3>
-                <p><span class="trans" data-cs="Jen pro ty, kteří vědí, co chtějí." data-en="Only for those who know what they want."></span></p>
+                <p><span class="trans" data-cs="Na vyžádání – jen pro ty, kteří vědí, co chtějí." data-en="On request – only for those who know what they want."></span></p>
                 <a href="#kontakt" class="btn"><span class="trans" data-cs="Kontaktuj mě" data-en="Contact Me"></span></a>
                 <span class="tooltiptext"><span class="trans" data-cs="Tantrická masáž probouzí energii, posiluje intimitu a přináší hlubokou relaxaci." data-en="Tantra massage awakens energy, strengthens intimacy, and brings deep relaxation."></span></span>
             </div>
@@ -502,7 +531,7 @@
     </section>
     <section id="rezervace">
         <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></h2>
-        <p style="text-align:center;"><span class="trans" data-cs="Rezervujte si termín přímo zde." data-en="Book your session directly here."></span></p>
+        <p style="text-align:center;"><span class="trans" data-cs="Rezervujte si termín přímo zde. Minimálně 3 dny dopředu." data-en="Book your session directly here. Minimum 3 days in advance."></span></p>
         <!-- Calendly inline widget begin -->
         <div class="calendly-inline-widget" data-url="https://calendly.com/masazewolf/objednavka" id="calendly-embed"></div>
         <!-- Calendly inline widget end -->
@@ -546,21 +575,13 @@
             <span class="close" id="close-modal">&times;</span>
             <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Lukáš Křemeček – Vlk za dotekem" data-en="Lukáš Křemeček – The Wolf Behind the Touch"></span></h2>
             <p><span class="trans" data-cs="Jsem Lukáš Křemeček, přezdívaný Vlk, oddaný masér a průvodce wellnessem se sídlem v srdci České republiky. S více než dvěma desetiletími zkušeností jsem získal svůj první certifikát v roce 2005 a od té doby jsem vybudoval působivé portfolio kvalifikací, specializující se na širokou škálu terapeutických technik. To, co začalo jako vášnivý koníček, se postupně proměnilo v mou naplňující profesi, která spojuje starodávnou moudrost s moderními praktikami, aby pečovala o tělo, mysl i ducha.
-
 Své dovednosti jsem piloval v prémiových hotelech po celé České republice – v historickém městě Znojmo i v klidném lázeňském městečku Luhačovice, kde jsem byl žádaným masérem. Ruku v ruce s masážemi jde meditace, která je mým celoživotním společníkem – zakořeněná už v letech základní školy a dnes naprosto přirozeně propojená s mou prací.
-
 V Masáže Wolf (IČO: 23558318) nabízím širokou škálu služeb – od klasických a hlubokotkáňových masáží přes baňkování, lymfatickou drenáž, medové masáže, indickou masáž hlavy, lávové kameny až po reflexologii chodidel. Pro ty, kteří touží po hlubším spojení, jsou dostupné tantrické masáže. Doplňují je mé naváděné relaxační meditace a dechová cvičení podle metody Wim Hof, která pomáhají odemknout vnitřní sílu a klid.
-
 Vyrábím si také vlastní prémiové produkty – uklidňující konopné masti a smyslné tantrické oleje –, díky nimž je každá zkušenost skutečně celostní a přesně na míru. Ať už se uvolňujete s 15% slevou na první návštěvu, nebo se ponoříte do speciálních balíčků jako „Vlčí spánek“ či „Medový úsvit“, můj přístup je jednoduchý: posílit vaše blaho s péčí, intuicí a špetkou divoké magie.
-
-Sídlím ve Zlíně a srdečně vás zvu, abyste znovu objevili rovnováhu. Rezervujte si svou cestu se mnou ještě dnes – relaxace na vás čeká." data-en="I am Lukáš Křemeček, known as the Wolf, a dedicated massage therapist and wellness guide based in the heart of the Czech Republic. With over two decades of experience, I earned my first certification in 2005 and have since built an impressive portfolio of qualifications, specializing in a wide array of therapeutic techniques. What began as a passionate hobby has evolved into my fulfilling profession, blending ancient wisdom with modern practices to nurture body, mind, and spirit.
-
+Sídlím ve Zlíně a srdečně vás zvu, abyste znovu objevili rovnováhu. Rezervujte si svou cestu se mnou ještě dnes – relaxace na vás čeká." data-en="I am Lukáš Křemeček, affectionately known as the Wolf, a dedicated massage therapist and wellness guide based in the heart of the Czech Republic. With over two decades of experience, I earned my first certification in 2005 and have since built an impressive portfolio of qualifications, specializing in a wide array of therapeutic techniques. What began as a passionate hobby has evolved into my fulfilling profession, blending ancient wisdom with modern practices to nurture body, mind, and spirit.
 I've honed my skills in premium hotels across the Czech Republic, including stints in the historic city of Znojmo and the serene spa town of Luhačovice, where I served as a sought-after massage therapist. Parallel to my hands-on expertise, meditation has been my lifelong companion—rooted in my elementary school years and seamlessly integrated into my work today.
-
 At Masáže Wolf (IČO: 23558318), I offer a transformative range of services, from classic and deep tissue massages to specialized treatments like cupping, lymphatic drainage, honey massages, Indian head therapy, hot stones, and foot reflexology. For those seeking a deeper connection, tantra massages are available on request, reserved for the discerning. Complementing these are my guided relaxation meditations and Wim Hof breathing sessions, designed to unlock your inner strength and serenity.
-
 I also craft my own premium products, including soothing hemp ointments and sensual tantric oils, ensuring every experience is holistic and personalized. Whether you're unwinding with a first-time discount or diving into bespoke packages like 'Wolf Sleep' or 'Honey Dawn,' my approach is simple: empower your well-being with care, intuition, and a touch of wild magic.
-
 Located in Zlín, I invite you to rediscover balance. Book your journey with me today—relaxation awaits."></span></p>
         </div>
     </div>
@@ -627,9 +648,148 @@ Located in Zlín, I invite you to rediscover balance. Book your journey with me 
                 modal.style.display = 'none';
             }
         });
+        // Client Database Script
+        const firebaseConfig = {
+            apiKey: "AIzaSyCDCUBNfWKFM-XkTv7wHQ71N0l-eftOWq4",
+            authDomain: "masazewolfclients.firebaseapp.com",
+            projectId: "masazewolfclients",
+            storageBucket: "masazewolfclients.appspot.com",
+            messagingSenderId: "980768057720",
+            appId: "1:980768057720:web:9eeb0f009a1f71f005408d"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.database();
+        const klientiSection = document.getElementById('klienti');
+        const klientiLink = document.querySelector('a[href="#klienti"]');
+        const clientNameInput = document.getElementById('client-name');
+        const clientGender = document.getElementById('client-gender');
+        const clientAge = document.getElementById('client-age');
+        const clientOccupation = document.getElementById('client-occupation');
+        const clientPosture = document.getElementById('client-posture');
+        const clientAnamnesis = document.getElementById('client-anamnesis');
+        const clientPain = document.getElementById('client-pain');
+        const clientProgress = document.getElementById('client-progress');
+        const clientMassages = document.getElementById('client-massages');
+        const addClientBtn = document.getElementById('add-client');
+        const clientList = document.getElementById('client-list');
+        const password = 'wolf123'; // Change this to your secret password
+        
+        klientiLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const enteredPassword = prompt('Enter password to access clients:');
+            if (enteredPassword === password) {
+                klientiSection.style.display = 'block';
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        loadClients();
+                    } else {
+                        const email = prompt('Email:');
+                        const pass = prompt('Password:');
+                        auth.signInWithEmailAndPassword(email, pass).catch((error) => alert(error.message));
+                    }
+                });
+            } else {
+                alert('Incorrect password');
+            }
+        });
+
+        addClientBtn.addEventListener('click', () => {
+            const client = {
+                name: clientNameInput.value,
+                gender: clientGender.value,
+                age: clientAge.value,
+                occupation: clientOccupation.value,
+                posture: clientPosture.value,
+                anamnesis: clientAnamnesis.value,
+                pain: clientPain.value,
+                progress: clientProgress.value,
+                massages: clientMassages.value
+            };
+            db.ref('clients').push(client);
+            clientNameInput.value = '';
+            clientGender.value = '';
+            clientAge.value = '';
+            clientOccupation.value = '';
+            clientPosture.value = '';
+            clientAnamnesis.value = '';
+            clientPain.value = '';
+            clientProgress.value = '';
+            clientMassages.value = '0';
+        });
+
+        function loadClients() {
+            db.ref('clients').on('value', (snapshot) => {
+                clientList.innerHTML = '';
+                snapshot.forEach((childSnapshot) => {
+                    const key = childSnapshot.key;
+                    const client = childSnapshot.val();
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${client.name}</td>
+                        <td>${client.gender}</td>
+                        <td>${client.age}</td>
+                        <td>${client.occupation}</td>
+                        <td>${client.posture}</td>
+                        <td>${client.anamnesis}</td>
+                        <td>${client.pain}</td>
+                        <td>${client.progress}</td>
+                        <td>${client.massages}</td>
+                        <td>
+                            <button class="edit-btn" data-key="${key}">Edit</button>
+                            <button class="delete-btn" data-key="${key}">Delete</button>
+                        </td>
+                    `;
+                    clientList.appendChild(row); // Fixed typo here
+                });
+            });
+        }
+
+        clientList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('edit-btn')) {
+                const key = e.target.dataset.key;
+                db.ref('clients/' + key).once('value').then((snapshot) => {
+                    const client = snapshot.val();
+                    clientNameInput.value = client.name;
+                    clientGender.value = client.gender;
+                    clientAge.value = client.age;
+                    clientOccupation.value = client.occupation;
+                    clientPosture.value = client.posture;
+                    clientAnamnesis.value = client.anamnesis;
+                    clientPain.value = client.pain;
+                    clientProgress.value = client.progress;
+                    clientMassages.value = client.massages;
+                    addClientBtn.textContent = 'Update';
+                    addClientBtn.onclick = () => {
+                        db.ref('clients/' + key).update({
+                            name: clientNameInput.value,
+                            gender: clientGender.value,
+                            age: clientAge.value,
+                            occupation: clientOccupation.value,
+                            posture: clientPosture.value,
+                            anamnesis: clientAnamnesis.value,
+                            pain: clientPain.value,
+                            progress: clientProgress.value,
+                            massages: clientMassages.value
+                        });
+                        clientNameInput.value = '';
+                        clientGender.value = '';
+                        clientAge.value = '';
+                        clientOccupation.value = '';
+                        clientPosture.value = '';
+                        clientAnamnesis.value = '';
+                        clientPain.value = '';
+                        clientProgress.value = '';
+                        clientMassages.value = '0';
+                        addClientBtn.textContent = 'Add';
+                        addClientBtn.onclick = null; // Reset to default
+                    };
+                });
+            } else if (e.target.classList.contains('delete-btn')) {
+                const key = e.target.dataset.key;
+                db.ref('clients/' + key).remove();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
