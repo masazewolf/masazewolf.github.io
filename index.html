@@ -116,7 +116,6 @@
         #produkty { background: var(--tepla); }
         #rezervace { background: var(--svetla); }
         #kontakt { background: var(--hlavni); color: white; }
-        #klienti { background: var(--tepla); display: none; } /* Hidden until password */
         .sluzby {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -308,7 +307,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             position: relative;
-            animation: slideIn 0.3s;
+            animation: slideIn 0.5s;
         }
         .close {
             color: var(--hlavni);
@@ -410,6 +409,7 @@
         <nav id="nav-menu">
             <a href="#sluzby"><span class="trans" data-cs="Služby" data-en="Services"></span></a>
             <a href="#balicky"><span class="trans" data-cs="Balíčky" data-en="Packages"></span></a>
+            <a href="#o-mne"><span class="trans" data-cs="O mě" data-en="About Me"></span></a>
             <a href="#produkty"><span class="trans" data-cs="Produkty" data-en="Products"></span></a>
             <a href="#rezervace"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></a>
             <a href="#kontakt"><span class="trans" data-cs="Kontakt" data-en="Contact"></span></a>
@@ -419,7 +419,6 @@
             <a href="#" id="lang-cs">CS</a> |
             <a href="#" id="lang-en">EN</a>
         </div>
-        <a class="bio-button" id="bio-button"><span class="trans" data-cs="O mě" data-en="About Me"></span></a>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -566,6 +565,64 @@
             SMS / Tel: <a href="tel:+420737327737" style="color:var(--akcent);">737 327 737</a>
         </p>
     </section>
+    <section id="klienti">
+        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Klienti" data-en="Clients"></span></h2>
+        <div class="client-form">
+            <label for="client-name"><span class="trans" data-cs="Jméno" data-en="Name"></span></label>
+            <input type="text" id="client-name" required>
+            
+            <label for="client-gender"><span class="trans" data-cs="Pohlaví" data-en="Gender"></span></label>
+            <select id="client-gender" required>
+                <option value="">Select</option>
+                <option value="Male"><span class="trans" data-cs="Muž" data-en="Male"></span></option>
+                <option value="Female"><span class="trans" data-cs="Žena" data-en="Female"></span></option>
+            </select>
+            
+            <label for="client-age"><span class="trans" data-cs="Věk" data-en="Age"></span></label>
+            <input type="number" id="client-age" required>
+            
+            <label for="client-occupation"><span class="trans" data-cs="Povolání" data-en="Occupation"></span></label>
+            <input type="text" id="client-occupation" required>
+            
+            <label for="client-posture"><span class="trans" data-cs="Postoj" data-en="Posture"></span></label>
+            <select id="client-posture" required>
+                <option value="">Select</option>
+                <option value="Sitting"><span class="trans" data-cs="Sedavé" data-en="Sitting"></span></option>
+                <option value="Standing"><span class="trans" data-cs="Stojící" data-en="Standing"></span></option>
+            </select>
+            
+            <label for="client-anamnesis"><span class="trans" data-cs="Anamnéza" data-en="Anamnesis"></span></label>
+            <textarea id="client-anamnesis"></textarea>
+            
+            <label for="client-pain"><span class="trans" data-cs="Lokalita bolesti" data-en="Pain Location"></span></label>
+            <textarea id="client-pain"></textarea>
+            
+            <label for="client-progress"><span class="trans" data-cs="Pokrok léčby" data-en="Treatment Progress"></span></label>
+            <textarea id="client-progress"></textarea>
+            
+            <label for="client-massages"><span class="trans" data-cs="Počet masáží" data-en="Massages Completed"></span></label>
+            <input type="number" id="client-massages" min="0" value="0" required>
+            
+            <button id="add-client"><span class="trans" data-cs="Přidat" data-en="Add"></span></button>
+        </div>
+        <table class="client-table">
+            <thead>
+                <tr>
+                    <th><span class="trans" data-cs="Jméno" data-en="Name"></span></th>
+                    <th><span class="trans" data-cs="Pohlaví" data-en="Gender"></span></th>
+                    <th><span class="trans" data-cs="Věk" data-en="Age"></span></th>
+                    <th><span class="trans" data-cs="Povolání" data-en="Occupation"></span></th>
+                    <th><span class="trans" data-cs="Postoj" data-en="Posture"></span></th>
+                    <th><span class="trans" data-cs="Anamnéza" data-en="Anamnesis"></span></th>
+                    <th><span class="trans" data-cs="Bolest" data-en="Pain"></span></th>
+                    <th><span class="trans" data-cs="Pokrok" data-en="Progress"></span></th>
+                    <th><span class="trans" data-cs="Masáže" data-en="Massages"></span></th>
+                    <th>Akce</th>
+                </tr>
+            </thead>
+            <tbody id="client-list"></tbody>
+        </table>
+    </section>
     <footer>
         <span class="trans" data-cs="© 2026 Masáže Wolf. IČO: 23558318. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení." data-en="© 2026 Wolf Massages. IČO: 23558318 All rights reserved. But some things are meant for sharing."></span>
     </footer>
@@ -575,7 +632,7 @@
             <span class="close" id="close-modal">&times;</span>
             <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Lukáš Křemeček – Vlk za dotekem" data-en="Lukáš Křemeček – The Wolf Behind the Touch"></span></h2>
             <p><span class="trans" data-cs="Jsem Lukáš Křemeček, přezdívaný Vlk, oddaný masér a průvodce wellnessem se sídlem v srdci České republiky. S více než dvěma desetiletími zkušeností jsem získal svůj první certifikát v roce 2005 a od té doby jsem vybudoval působivé portfolio kvalifikací, specializující se na širokou škálu terapeutických technik. To, co začalo jako vášnivý koníček, se postupně proměnilo v mou naplňující profesi, která spojuje starodávnou moudrost s moderními praktikami, aby pečovala o tělo, mysl i ducha.
-Své dovednosti jsem piloval v prémiových hotelech v České republice – v historickém městě Znojmo i v klidném lázeňském městečku Luhačovice, kde jsem byl žádaným masérem. Ruku v ruce s masážemi jde meditace, která je mým celoživotním společníkem – zakořeněná už v letech základní školy a dnes naprosto přirozeně propojená s mou prací.
+Své dovednosti jsem piloval v prémiových hotelech v České Republice – v historickém městě Znojmo i v klidném lázeňském městečku Luhačovice, kde jsem byl žádaným masérem. Ruku v ruce s masážemi jde meditace, která je mým celoživotním společníkem – zakořeněná už v letech základní školy a dnes naprosto přirozeně propojená s mou prací.
 V Masáže Wolf (IČO: 23558318) nabízím širokou škálu služeb – od klasických a hlubokotkáňových masáží přes baňkování, lymfatickou drenáž, medové masáže, indickou masáž hlavy, lávové kameny až po reflexologii chodidel. Pro ty, kteří touží po hlubším spojení, jsou dostupné tantrické masáže. Doplňují je mé naváděné relaxační meditace a dechová cvičení podle metody Wim Hof, která pomáhají odemknout vnitřní sílu a klid.
 Vyrábím si také vlastní prémiové produkty – uklidňující konopné masti a smyslné tantrické oleje –, díky nimž je každá zkušenost skutečně celostní a přesně na míru. Ať už se uvolňujete s 15% slevou na první návštěvu, nebo se ponoříte do speciálních balíčků jako „Vlčí spánek“ či „Medový úsvit“, můj přístup je jednoduchý: posílit vaše blaho s péčí, intuicí a špetkou divoké magie.
 Sídlím ve Zlíně a srdečně vás zvu, abyste znovu objevili rovnováhu. Rezervujte si svou cestu se mnou ještě dnes – relaxace na vás čeká." data-en="I am Lukáš Křemeček, known as the Wolf, a dedicated massage therapist and wellness guide based in the heart of the Czech Republic. With over two decades of experience, I earned my first certification in 2005 and have since built an impressive portfolio of qualifications, specializing in a wide array of therapeutic techniques. What began as a passionate hobby has evolved into my fulfilling profession, blending ancient wisdom with modern practices to nurture body, mind, and spirit.
@@ -740,7 +797,7 @@ Located in Zlín, I invite you to rediscover balance. Book your journey with me 
                             <button class="delete-btn" data-key="${key}">Delete</button>
                         </td>
                     `;
-                    clientList.appendChild(row); // Fixed typo here
+                    clientList.appendChild(row); // Fixed typo
                 });
             });
         }
@@ -793,4 +850,3 @@ Located in Zlín, I invite you to rediscover balance. Book your journey with me 
     </script>
 </body>
 </html>
-
