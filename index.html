@@ -12,10 +12,6 @@
       gtag('js', new Date());
       gtag('config', 'G-VPZ8GZDBSY');
     </script>
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
     <style>
         :root {
             --hlavni: #1e352f;
@@ -374,29 +370,6 @@
             visibility: visible;
             opacity: 1;
         }
-        /* Client Database Styles */
-        .client-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .client-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-        }
-        .client-table th, .client-table td {
-            border: 1px solid var(--akcent);
-            padding: 0.5rem;
-            text-align: left;
-        }
-        .client-table th {
-            background: var(--akcent);
-            color: var(--hlavni);
-        }
-        .client-edit-form {
-            display: none;
-            margin-top: 1rem;
-        }
     </style>
     <!-- Calendly link widget begin -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -409,16 +382,15 @@
         <nav id="nav-menu">
             <a href="#sluzby"><span class="trans" data-cs="Služby" data-en="Services"></span></a>
             <a href="#balicky"><span class="trans" data-cs="Balíčky" data-en="Packages"></span></a>
-            <a href="#o-mne"><span class="trans" data-cs="O mě" data-en="About Me"></span></a>
             <a href="#produkty"><span class="trans" data-cs="Produkty" data-en="Products"></span></a>
             <a href="#rezervace"><span class="trans" data-cs="Rezervace" data-en="Booking"></span></a>
             <a href="#kontakt"><span class="trans" data-cs="Kontakt" data-en="Contact"></span></a>
-            <a href="#klienti"><span class="trans" data-cs="Klienti" data-en="Clients"></span></a>
         </nav>
         <div class="lang-switcher">
             <a href="#" id="lang-cs">CS</a> |
             <a href="#" id="lang-en">EN</a>
         </div>
+        <a class="bio-button" id="bio-button"><span class="trans" data-cs="O mě" data-en="About Me"></span></a>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -565,64 +537,6 @@
             SMS / Tel: <a href="tel:+420737327737" style="color:var(--akcent);">737 327 737</a>
         </p>
     </section>
-    <section id="klienti">
-        <h2 style="text-align:center; color:var(--akcent);"><span class="trans" data-cs="Klienti" data-en="Clients"></span></h2>
-        <div class="client-form">
-            <label for="client-name"><span class="trans" data-cs="Jméno" data-en="Name"></span></label>
-            <input type="text" id="client-name" required>
-            
-            <label for="client-gender"><span class="trans" data-cs="Pohlaví" data-en="Gender"></span></label>
-            <select id="client-gender" required>
-                <option value="">Select</option>
-                <option value="Male"><span class="trans" data-cs="Muž" data-en="Male"></span></option>
-                <option value="Female"><span class="trans" data-cs="Žena" data-en="Female"></span></option>
-            </select>
-            
-            <label for="client-age"><span class="trans" data-cs="Věk" data-en="Age"></span></label>
-            <input type="number" id="client-age" required>
-            
-            <label for="client-occupation"><span class="trans" data-cs="Povolání" data-en="Occupation"></span></label>
-            <input type="text" id="client-occupation" required>
-            
-            <label for="client-posture"><span class="trans" data-cs="Postoj" data-en="Posture"></span></label>
-            <select id="client-posture" required>
-                <option value="">Select</option>
-                <option value="Sitting"><span class="trans" data-cs="Sedavé" data-en="Sitting"></span></option>
-                <option value="Standing"><span class="trans" data-cs="Stojící" data-en="Standing"></span></option>
-            </select>
-            
-            <label for="client-anamnesis"><span class="trans" data-cs="Anamnéza" data-en="Anamnesis"></span></label>
-            <textarea id="client-anamnesis"></textarea>
-            
-            <label for="client-pain"><span class="trans" data-cs="Lokalita bolesti" data-en="Pain Location"></span></label>
-            <textarea id="client-pain"></textarea>
-            
-            <label for="client-progress"><span class="trans" data-cs="Pokrok léčby" data-en="Treatment Progress"></span></label>
-            <textarea id="client-progress"></textarea>
-            
-            <label for="client-massages"><span class="trans" data-cs="Počet masáží" data-en="Massages Completed"></span></label>
-            <input type="number" id="client-massages" min="0" value="0" required>
-            
-            <button id="add-client"><span class="trans" data-cs="Přidat" data-en="Add"></span></button>
-        </div>
-        <table class="client-table">
-            <thead>
-                <tr>
-                    <th><span class="trans" data-cs="Jméno" data-en="Name"></span></th>
-                    <th><span class="trans" data-cs="Pohlaví" data-en="Gender"></span></th>
-                    <th><span class="trans" data-cs="Věk" data-en="Age"></span></th>
-                    <th><span class="trans" data-cs="Povolání" data-en="Occupation"></span></th>
-                    <th><span class="trans" data-cs="Postoj" data-en="Posture"></span></th>
-                    <th><span class="trans" data-cs="Anamnéza" data-en="Anamnesis"></span></th>
-                    <th><span class="trans" data-cs="Bolest" data-en="Pain"></span></th>
-                    <th><span class="trans" data-cs="Pokrok" data-en="Progress"></span></th>
-                    <th><span class="trans" data-cs="Masáže" data-en="Massages"></span></th>
-                    <th>Akce</th>
-                </tr>
-            </thead>
-            <tbody id="client-list"></tbody>
-        </table>
-    </section>
     <footer>
         <span class="trans" data-cs="© 2026 Masáže Wolf. IČO: 23558318. Všechny práva vyhrazena. Ale některé věci jsou přece jen na sdílení." data-en="© 2026 Wolf Massages. IČO: 23558318 All rights reserved. But some things are meant for sharing."></span>
     </footer>
@@ -703,148 +617,6 @@ Located in Zlín, I invite you to rediscover balance. Book your journey with me 
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
-            }
-        });
-        // Client Database Script
-        const firebaseConfig = {
-            apiKey: "AIzaSyCDCUBNfWKFM-XkTv7wHQ71N0l-eftOWq4",
-            authDomain: "masazewolfclients.firebaseapp.com",
-            projectId: "masazewolfclients",
-            storageBucket: "masazewolfclients.appspot.com",
-            messagingSenderId: "980768057720",
-            appId: "1:980768057720:web:9eeb0f009a1f71f005408d"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.database();
-        const klientiSection = document.getElementById('klienti');
-        const klientiLink = document.querySelector('a[href="#klienti"]');
-        const clientNameInput = document.getElementById('client-name');
-        const clientGender = document.getElementById('client-gender');
-        const clientAge = document.getElementById('client-age');
-        const clientOccupation = document.getElementById('client-occupation');
-        const clientPosture = document.getElementById('client-posture');
-        const clientAnamnesis = document.getElementById('client-anamnesis');
-        const clientPain = document.getElementById('client-pain');
-        const clientProgress = document.getElementById('client-progress');
-        const clientMassages = document.getElementById('client-massages');
-        const addClientBtn = document.getElementById('add-client');
-        const clientList = document.getElementById('client-list');
-        const password = 'wolf123'; // Change this to your secret password
-        
-        klientiLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const enteredPassword = prompt('Enter password to access clients:');
-            if (enteredPassword === password) {
-                klientiSection.style.display = 'block';
-                auth.onAuthStateChanged((user) => {
-                    if (user) {
-                        loadClients();
-                    } else {
-                        const email = prompt('Email:');
-                        const pass = prompt('Password:');
-                        auth.signInWithEmailAndPassword(email, pass).catch((error) => alert(error.message));
-                    }
-                });
-            } else {
-                alert('Incorrect password');
-            }
-        });
-
-        addClientBtn.addEventListener('click', () => {
-            const client = {
-                name: clientNameInput.value,
-                gender: clientGender.value,
-                age: clientAge.value,
-                occupation: clientOccupation.value,
-                posture: clientPosture.value,
-                anamnesis: clientAnamnesis.value,
-                pain: clientPain.value,
-                progress: clientProgress.value,
-                massages: clientMassages.value
-            };
-            db.ref('clients').push(client);
-            clientNameInput.value = '';
-            clientGender.value = '';
-            clientAge.value = '';
-            clientOccupation.value = '';
-            clientPosture.value = '';
-            clientAnamnesis.value = '';
-            clientPain.value = '';
-            clientProgress.value = '';
-            clientMassages.value = '0';
-        });
-
-        function loadClients() {
-            db.ref('clients').on('value', (snapshot) => {
-                clientList.innerHTML = '';
-                snapshot.forEach((childSnapshot) => {
-                    const key = childSnapshot.key;
-                    const client = childSnapshot.val();
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${client.name}</td>
-                        <td>${client.gender}</td>
-                        <td>${client.age}</td>
-                        <td>${client.occupation}</td>
-                        <td>${client.posture}</td>
-                        <td>${client.anamnesis}</td>
-                        <td>${client.pain}</td>
-                        <td>${client.progress}</td>
-                        <td>${client.massages}</td>
-                        <td>
-                            <button class="edit-btn" data-key="${key}">Edit</button>
-                            <button class="delete-btn" data-key="${key}">Delete</button>
-                        </td>
-                    `;
-                    clientList.appendChild(row); // Fixed typo
-                });
-            });
-        }
-
-        clientList.addEventListener('click', (e) => {
-            if (e.target.classList.contains('edit-btn')) {
-                const key = e.target.dataset.key;
-                db.ref('clients/' + key).once('value').then((snapshot) => {
-                    const client = snapshot.val();
-                    clientNameInput.value = client.name;
-                    clientGender.value = client.gender;
-                    clientAge.value = client.age;
-                    clientOccupation.value = client.occupation;
-                    clientPosture.value = client.posture;
-                    clientAnamnesis.value = client.anamnesis;
-                    clientPain.value = client.pain;
-                    clientProgress.value = client.progress;
-                    clientMassages.value = client.massages;
-                    addClientBtn.textContent = 'Update';
-                    addClientBtn.onclick = () => {
-                        db.ref('clients/' + key).update({
-                            name: clientNameInput.value,
-                            gender: clientGender.value,
-                            age: clientAge.value,
-                            occupation: clientOccupation.value,
-                            posture: clientPosture.value,
-                            anamnesis: clientAnamnesis.value,
-                            pain: clientPain.value,
-                            progress: clientProgress.value,
-                            massages: clientMassages.value
-                        });
-                        clientNameInput.value = '';
-                        clientGender.value = '';
-                        clientAge.value = '';
-                        clientOccupation.value = '';
-                        clientPosture.value = '';
-                        clientAnamnesis.value = '';
-                        clientPain.value = '';
-                        clientProgress.value = '';
-                        clientMassages.value = '0';
-                        addClientBtn.textContent = 'Add';
-                        addClientBtn.onclick = null; // Reset to default
-                    };
-                });
-            } else if (e.target.classList.contains('delete-btn')) {
-                const key = e.target.dataset.key;
-                db.ref('clients/' + key).remove();
             }
         });
     </script>
